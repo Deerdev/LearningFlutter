@@ -16,6 +16,7 @@ class OutOfLlamasException implements Exception {
 buyMoreLlamas() {}
 clean() {}
 
+// -----------------------------------------------------------------------
 learningException() {
   try {
     breedMoreLlamas();
@@ -29,7 +30,7 @@ learningException() {
   } catch (e) {
     // No specified type, handles all
     print('Something really unknown: $e');
-    // 使用 rethrow 关键字可以 把捕获的异常给 重新抛出。
+    // 使用 rethrow 关键字可以 把捕获的异常给 重新抛出, 让调用者可以捕获
     rethrow;
   } catch (e, s) {
     // 函数 catch() 可以带有一个或者两个参数， 第一个参数为抛出的异常对象， 第二个为堆栈信息 (一个 StackTrace 对象)。

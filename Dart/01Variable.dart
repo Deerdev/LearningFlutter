@@ -23,6 +23,7 @@ learningVariable() {
 
   // 可以继续修改far
   far = [];
+
   // error: const final 不可修改
   // boo = [];
   // baz = [];
@@ -97,6 +98,45 @@ learningVariable() {
   // error
   l2[1] = 4;
 
+  // (...)组合list
+  var list = [1, 2, 3];
+  var list2 = [0, ...list];
+  assert(list2.length == 4);
+
+  // （...?）防止 组合list为空
+  var list3;
+  var list4 = [0, ...?list3];
+  assert(list4.length == 1);
+
+  // if: 判断是否加入list
+  var nav = ['Home', 'Furniture', 'Plants', if (l1.length == 1) 'Outlet'];
+
+  // for: for循环添加元素
+  var listOfInts = [1, 2, 3];
+  var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
+  assert(listOfStrings[1] == '#1');
+
+// ---------------------------------------------------------------- //
+  /// Set
+  var names = <String>{};
+  // Set<String> names = {}; // This works, too.
+  // var names = {}; // Creates a map, not a set.
+
+  var elements = <String>{};
+  elements.add('fluorine');
+  elements.addAll(names);
+  assert(elements.length == 1);
+
+  // const set
+  final constantSet = const {
+    'fluorine',
+    'chlorine',
+    'bromine',
+    'iodine',
+    'astatine',
+  };
+  // constantSet.add('helium'); // Uncommenting this causes an error.
+
 // ---------------------------------------------------------------- //
 
   /// Maps
@@ -123,6 +163,8 @@ learningVariable() {
   gifts2['fourth'] = 'calling birds'; // Add a key-value pair
   // 获取不存在的key，返回null
   print(gifts['six']); // null
+  // key-value键值对数目
+  assert(gifts.length == 2);
 
   // 编译时常量
   final constantMap = const {

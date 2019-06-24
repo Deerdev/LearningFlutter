@@ -1,3 +1,5 @@
+import 'dart:math';
+
 /// 3.抽象类 接口 扩展(继承)类
 
 /// 抽象类 & 抽象函数
@@ -69,11 +71,34 @@ class SmartTelevision extends Television {
   // ...
 }
 
+/// 重载操作符
+// http://dart.goodev.org/guides/language/language-tour#overridable-operators%E5%8F%AF%E8%A6%86%E5%86%99%E7%9A%84%E6%93%8D%E4%BD%9C%E7%AC%A6
+// 如果你覆写了 == ，则还应该覆写对象的 hashCode getter 函数。 关于 覆写 == 和 hashCode 的示例请参考 http://dart.goodev.org/guides/libraries/library-tour#implementing-map-keys
+
+class Vector {
+  final int x;
+  final int y;
+  const Vector(this.x, this.y);
+
+  /// Overrides + (a + b).
+  Vector operator +(Vector v) {
+    return new Vector(x + v.x, y + v.y);
+  }
+
+  /// Overrides - (a - b).
+  Vector operator -(Vector v) {
+    return new Vector(x - v.x, y - v.y);
+  }
+}
+
+/// noSuchMethod()
 // 覆写 Object 类的 noSuchMethod() 函数的例子， 如果调用了对象上不存在的函数，则就会触发 noSuchMethod() 函 数。
 // 如果你使用 noSuchMethod() 函数来实现每个可能的 getter 、setter、 以及其他类型的函数，你可以使用 @proxy 注解来避免警告信息
 // @proxy: to implement a class that isn't known statically, as documented at the end of this text (将在Dart2废弃)
-@proxy
+
+// @proxy
 class A {
+  @override
   void noSuchMethod(Invocation mirror) {
     // 实现未实现的方法
   }
@@ -81,9 +106,28 @@ class A {
 
 // 如果你知道编译时的具体类型，则可以 实现这些类来避免警告，和 使用 @proxy 效果一样：
 class B /*implements SomeClass, SomeOtherClass */ {
+  @override
   void noSuchMethod(Invocation mirror) {
     // ...
   }
 }
 
 /// 静态方法 静态属性
+
+// 静态变量等到使用时才初始化
+class Queue {
+  static const initialCapacity = 16;
+  // ···
+}
+
+// 静态方法 可以认为是 编译时静态变量，所以可以作为参数 传递给 静态（常量）构造函数
+class Point {
+  num x, y;
+  Point(this.x, this.y);
+
+  static num distanceBetween(Point a, Point b) {
+    var dx = a.x - b.x;
+    var dy = a.y - b.y;
+    return sqrt(dx * dx + dy * dy);
+  }
+}

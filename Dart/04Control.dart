@@ -22,6 +22,7 @@ learningControl() {
   for (var item in c) {}
 
   while (a > 0) {}
+
   do {
     print("test");
   } while (a > 0);

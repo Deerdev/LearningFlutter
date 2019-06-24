@@ -77,6 +77,7 @@ learningOperators() {
     ..text = 'Confirm' // Use its members.
     ..classes.add('important')
     ..onClick.listen((e) => alert('Confirmed!'));
+
   // 同以下代码
   var button = querySelector('#button');
   button.text = 'Confirm';

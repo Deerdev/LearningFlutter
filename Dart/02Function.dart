@@ -1,4 +1,3 @@
-
 /// 函数也是一个类型`Function`, 继承自 Object
 /// 所有的函数都返回一个值。如果没有指定返回值，则 默认把语句 return null; 作为函数的最后一个语句执行。
 
@@ -37,8 +36,8 @@ testSay() {
 
 // 同时还可以给命名参数加 @required ，意思是这个也是必填参数，例子如下：
 // 只有 Flutter 支持？
-// bool say2(String msg, {@required String from, int clock}) {
-bool say2(String msg, {String from, int clock}) {
+bool say2(String msg, {@required String from, int clock}) {
+// bool say2(String msg, {String from, int clock}) {
   print(msg + " from " + from + " at " + clock.toString());
   return true;
 }
@@ -124,6 +123,11 @@ testMakeAdder() {
 
   assert(add2(3) == 5);
   assert(add4(3) == 7);
+
+  var list = ['apples', 'bananas', 'oranges'];
+  list.forEach((item) {
+    print('${list.indexOf(item)}: $item');
+  });
 }
 
 /// 函数是变量，也可以相等比较

@@ -73,6 +73,11 @@ class Point3 {
         y = jsonMap['y'] {
     print('In Point.fromJson(): ($x, $y)');
   }
+
+  // 开发阶段可以使用assert判断入参
+  Point3.withAssert(this.x, this.y) : assert(x >= 0) {
+    print('In Point.withAssert(): ($x, $y)');
+  }
 }
 
 /// Constant constructors（常量构造函数）
