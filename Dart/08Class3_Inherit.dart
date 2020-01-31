@@ -23,14 +23,15 @@ class SpecializedContainer extends AbstractContainer {
 // implements 仅仅是实现接口，并不是继承
 // implements 可以实现多个接口
 
+// (每个类也是接口声明) 隐式接口里面包含了 greet() 方法声明。
 class Person {
-  // In the interface, but visible only in this library.
+  // 包含在接口里，但只在当前库中可见。
   final _name;
 
-  // Not in the interface, since this is a constructor.
+  // 不包含在接口里，因为这是一个构造函数。
   Person(this._name);
 
-  // In the interface.
+  // 包含在接口里。
   String greet(who) => 'Hello, $who. I am $_name.';
 }
 
@@ -98,6 +99,8 @@ class Vector {
 
 // @proxy
 class A {
+  // 如果不重写 noSuchMethod，访问
+  // 不存在的实例变量时会导致 NoSuchMethodError 错误。
   @override
   void noSuchMethod(Invocation mirror) {
     // 实现未实现的方法
@@ -114,7 +117,7 @@ class B /*implements SomeClass, SomeOtherClass */ {
 
 /// 静态方法 静态属性
 
-// 静态变量等到使用时才初始化
+// 静态变量等到使用时(被调用时)才会初始化
 class Queue {
   static const initialCapacity = 16;
   // ···

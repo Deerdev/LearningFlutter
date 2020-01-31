@@ -31,7 +31,14 @@ class Point {
 
   /// 重定向构造函数
   // 自身无实现，调用其他构造函数
+  // 重定向构造函数的函数体为空， 构造函数的调用在冒号 (:) 之后
   Point.alongXAxis(num x) : this(x, 0);
+
+  // 命名构造函数
+  Point.origin() {
+    x = 0;
+    y = 0;
+  }
 }
 
 // Default constructors（默认构造函数）
@@ -104,6 +111,7 @@ learningClass() {
 
   assert(identical(a, b)); // They are the same instance!
 
+  /// runtimeType
   // 可以使用 Object 的 runtimeType 属性来判断实例 的类型，该属性 返回一个 Type 对象。
   print('The type of a is ${a.runtimeType}');
 }

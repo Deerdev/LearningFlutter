@@ -90,6 +90,7 @@ void main(List<String> arguments) {
   assert(arguments[1] == 'test');
 }
 
+// web app
 // void main() {
 //   querySelector("#sample_text_id")
 //     ..text = "Click me!"
@@ -106,6 +107,10 @@ testPrintElement() {
   // Pass printElement as a parameter.
   list.forEach(printElement);
 }
+
+// 变量赋值
+var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
+
 
 /// 闭包捕获
 // Returns a function that adds [addBy] to the
@@ -131,3 +136,25 @@ testMakeAdder() {
 }
 
 /// 函数是变量，也可以相等比较
+var x;
+void foo() {} // 顶级函数
+
+// 比较顶级函数。
+x = foo;
+assert(foo == x);
+
+
+/// 匿名函数
+/*
+- Type 参数类型
+- (int item) {};
+
+([[Type] param1[, …]]) {
+  codeBlock;
+};
+*/
+
+var list = ['apples', 'bananas', 'oranges'];
+list.forEach((item) {
+  print('${list.indexOf(item)}: $item');
+});
