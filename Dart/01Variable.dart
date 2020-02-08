@@ -183,6 +183,7 @@ learningVariable() {
   print(new String.fromCharCodes(input)); // 打印出来的是笑脸emoji：😆
 
   /// 通常使用 \uXXXX 的方式来表示 Unicode code point， 这里的 XXXX 是4个 16 进制的数。 例如，心形符号 (♥) 是 \u2665。 对于非 4 个数值的情况， 把编码值放到大括号中即可。 例如，笑脸 emoji (😆) 是 \u{1f600}。
+  // 超过 4个16进制需要用大括号，两个码点以上
   var clapping = '\u{1f44f}';
   print(clapping); // 👏
   print(clapping.codeUnits); // [128079]
